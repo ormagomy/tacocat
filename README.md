@@ -1,7 +1,7 @@
 # Group Name
 TacoCat
 # Team Mascot from Google Images
-![TacoCat](TacoCatImage.jpg)
+![TacoCat](TacoCatImage.png)
 # Motivational Team Slogan
 "Nothing is particularly hard if you divide it into small jobs." -Henry Ford
 # Team Colors 
