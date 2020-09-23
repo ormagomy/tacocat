@@ -1,3 +1,19 @@
+# Group Name
+TacoCat
+# Team Mascot from Google Images
+attached imaged
+# Motivational Team Slogan
+"Nothing is particularly hard if you divide it into small jobs." -Henry Ford
+# Team Colors 
+Green/red/yellow
+# GitHub URL 
+https://github.com/ormagomy/tacocat
+# Slack Channel
+#tacocat
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
