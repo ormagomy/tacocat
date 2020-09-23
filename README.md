@@ -1,14 +1,14 @@
-## Group Name
+# Group Name
 TacoCat
-## Team Mascot from Google Images
+# Team Mascot from Google Images
 attached imaged
-## Motivational Team Slogan
+# Motivational Team Slogan
 "Nothing is particularly hard if you divide it into small jobs." -Henry Ford
-## Team Colors 
+# Team Colors 
 Green/red/yellow
-## GitHub URL 
+# GitHub URL 
 https://github.com/ormagomy/tacocat
-## Slack Channel
+# Slack Channel
 #tacocat
 
 
