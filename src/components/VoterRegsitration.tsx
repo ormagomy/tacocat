@@ -40,7 +40,7 @@ export function VoterRegsitration() {
         <div style={divStyle}>
             <h2> Welcome to voter Registration</h2>
 
-            <VoterForm buttonText="Submit" {...boundActions} />
+            <VoterForm buttonText="Complete Registration" {...boundActions} />
 
             <button onClick={display}>Display Lsit of Voters</button>
             {displayVoters && <VoterTable voters={voters} />}
