@@ -61,14 +61,3 @@ export default function BasicExample() {
         </Router>
     );
 }
-
-// You can think of these components as "pages"
-// in your app.
-
-function Dashboard() {
-    return (
-        <div>
-            <h2>Dashboard</h2>
-        </div>
-    );
-}

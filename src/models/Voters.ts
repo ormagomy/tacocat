@@ -8,3 +8,5 @@ export interface Voter {
     email: string;
     phone: string;
 }
+
+export type NewVoter = Omit<Voter, 'id'>;
