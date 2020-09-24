@@ -53,6 +53,7 @@
     ],
     "ballots": [
         {
+            "id": 1,
             "voterId": 123,
             "electionId": 1,
             "votes": [
@@ -67,6 +68,7 @@
             ]
         },
         {
+            "id": 2,
             "voterId": 234,
             "electionId": 1,
             "votes": [
