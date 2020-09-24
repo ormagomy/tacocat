@@ -19,16 +19,6 @@
             "birthdate": "12/12/12",
             "email": "here@work.com",
             "phone": "520-123-4567"
-        },
-        {
-            "firstname": "ssss",
-            "lastname": "ssss",
-            "address": "sss",
-            "city": "fremont",
-            "birthdate": "1010101",
-            "email": "sunil",
-            "phone": "1010101",
-            "id": 235
         }
     ],
     "elections": [
