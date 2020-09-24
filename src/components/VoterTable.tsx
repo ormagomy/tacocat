@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Voter} from '../models/Voters';
 
-import {Table, TableBody, TableHead, TableRow, TableCell, TableSortLabel} from '@material-ui/core';
+import {Table, TableBody, TableHead, TableRow, TableCell, TableSortLabel, makeStyles} from '@material-ui/core';
 //Sorting Stuff
 type orderType = 'asc' | 'desc' | undefined;
 
@@ -60,12 +60,28 @@ export function VoterTable(props: voterProps) {
         setOrderBy(id);
     };
 
+    const useStyles = makeStyles({
+        h3: {
+            'background-color': '#e6ffe6', //green
+        },
+
+        tbody: {
+            'background-color': '#ffffe6', //yellow
+        },
+        thead: {
+            // 'background-color': '#ff9999', //red
+            'background-color': 'blue', //red
+        },
+    });
+
+    const classes = useStyles();
+
     return (
         <>
-            <h3> Here is the current list of Voters</h3>
+            <h3 className={classes.h3}> Here is the current list of Voters</h3>
 
             <Table>
-                <TableHead>
+                <TableHead className={classes.thead}>
                     <TableRow>
                         {headCells.map((headCell) =>
                             headCell.id !== 'actions' ? (
@@ -80,7 +96,7 @@ export function VoterTable(props: voterProps) {
                         )}
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className={classes.tbody}>
                     {stableSort(props.voters, getComparator(order, orderBy)).map((voter) => (
                         <TableRow key={voter.id}>
                             <TableCell>{voter.id}</TableCell>

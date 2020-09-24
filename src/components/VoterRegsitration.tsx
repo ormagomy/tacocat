@@ -32,14 +32,18 @@ export function VoterRegsitration() {
         return setDisplay(!displayVoters);
     };
 
+    const divStyle = {
+        backgroundColor: '#ff9999',
+    };
+
     return (
-        <>
+        <div style={divStyle}>
             <h2> Welcome to voter Registration</h2>
             <VoterForm />
             {/* <VoterForm {...boundActions} /> */}
 
             <button onClick={display}>Display Lsit of Voters</button>
             {displayVoters && <VoterTable voters={voters} />}
-        </>
+        </div>
     );
 }
