@@ -1,9 +1,9 @@
 import React from "react";
 
-export function About() {
+export function Election() {
     return (
       <div>
-        <h2> what up tacocat</h2>
+        <h2> Create Elections</h2>
       </div>
     );
   }

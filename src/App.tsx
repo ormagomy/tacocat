@@ -6,8 +6,10 @@ import {
   Link
 } from 'react-router-dom';
 
-import { About } from './components/About';
+import { VoterRegsitration } from './components/VoterRegsitration';
 import { Home } from './components/Home';
+import { Election } from './components/Election';
+import { Vote } from './components/Vote';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -27,10 +29,13 @@ export default function BasicExample() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/VoterRegsitration">Register Voter</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/Vote">Vote</Link>
+          </li>
+          <li>
+            <Link to="/Election">Election</Link>
           </li>
         </ul>
 
@@ -47,11 +52,14 @@ export default function BasicExample() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
-            <About />
+          <Route path="/VoterRegsitration">
+            <VoterRegsitration />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
+          <Route path="/Vote">
+            <Vote />
+          </Route>
+          <Route path="/Election">
+            <Election />
           </Route>
         </Switch>
       </div>

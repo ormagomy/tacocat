@@ -1,9 +1,9 @@
 import React from "react";
 
-export function Home() {
+export function Vote() {
     return (
       <div>
-        <h2>Welcome to the TacoCat Home Page</h2>
+        <h2>VOTE</h2>
       </div>
     );
   }
