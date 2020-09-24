@@ -1,7 +1,84 @@
 {
-    "tests": [
-        {
-            "id": 1
-        }
+    "voters": [
+      {
+        "id": 123,
+        "firstname": "Fred",
+        "lastname": "Flintstone",
+        "address": "123 calle de street",
+        "city": "here",
+        "birthdate": "12/12/12",
+        "email": "here@work.com",
+        "phone": "520-123-4567"
+      },
+      {
+        "id": 234,
+        "firstname": "Wilma",
+        "lastname": "FlintStone",
+        "address": "456 street",
+        "city": "san diego",
+        "birthdate": "12/12/12",
+        "email": "here@work.com",
+        "phone": "520-123-4567"
+      }
+    ],
+    "elections": [
+      {
+        "id": 1,
+        "name": "Favorite Foods",
+        "questions": [
+          {
+            "id": 1,
+            "text": "Do you like Burritos?"
+          },
+          {
+            "id": 2,
+            "text": "Do you like Tacos?"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Favorite Animals",
+        "questions": [
+          {
+            "id": 1,
+            "text": "Do you like Cats?"
+          },
+          {
+            "id": 2,
+            "text": "Do you like Dogs?"
+          }
+        ]
+      }
+    ],
+    "ballots": [
+      {
+        "voterId": 123,
+        "electionId": 1,
+        "votes": [
+          {
+            "questionId": 1,
+            "answer": true
+          },
+          {
+            "questionId": 2,
+            "answer": false
+          }
+        ]
+      },
+      {
+        "voterId": 234,
+        "electionId": 1,
+        "votes": [
+          {
+            "questionId": 1,
+            "answer": true
+          },
+          {
+            "questionId": 2,
+            "answer": true
+          }
+        ]
+      }
     ]
-}
+  }
