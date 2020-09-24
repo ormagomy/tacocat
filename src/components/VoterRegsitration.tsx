@@ -35,8 +35,8 @@ export function VoterRegsitration() {
     return (
         <>
             <h2> Welcome to voter Registration</h2>
-            <VoterForm />
-            {/* <VoterForm {...boundActions} /> */}
+
+            <VoterForm buttonText="Submit" {...boundActions} />
 
             <button onClick={display}>Display Lsit of Voters</button>
             {displayVoters && <VoterTable voters={voters} />}
