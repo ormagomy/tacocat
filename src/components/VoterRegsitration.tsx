@@ -43,7 +43,7 @@ export function VoterRegsitration() {
             <VoterForm buttonText="Complete Registration" {...boundActions} />
 
             <button onClick={display}>Display Lsit of Voters</button>
-            {displayVoters && <VoterTable voters={voters} />}
+            {displayVoters && <VoterTable voters={voters} {...boundActions} />}
         </div>
     );
 }

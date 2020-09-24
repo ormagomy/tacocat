@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Voter} from '../models/Voters';
-
-import {Table, TableBody, TableHead, TableRow, TableCell, TableSortLabel, makeStyles} from '@material-ui/core';
+import {Table, TableBody, TableHead, TableRow, TableCell, TableSortLabel, makeStyles, Button} from '@material-ui/core';
 //Sorting Stuff
 type orderType = 'asc' | 'desc' | undefined;
 
@@ -31,9 +30,10 @@ function stableSort(voters: Voter[], comparator: (a: Voter, b: Voter) => number)
     return stabilizedThis.map((el) => el.voter);
 }
 //End Sorting Stuff
-
 export type voterProps = {
     voters: Voter[];
+    onDeleteVoter: (voterId: number) => void;
+    onEditVoter: (voter: Voter) => void;
 };
 const headCells = [
     {id: 'id', label: 'VoterId'},
@@ -44,6 +44,7 @@ const headCells = [
     {id: 'birthdate', label: 'Birthdate'},
     {id: 'email', label: 'Email'},
     {id: 'phone', label: 'Phone'},
+    {id: 'actions', label: 'Actions'},
 ];
 
 export function VoterTable(props: voterProps) {
@@ -76,6 +77,11 @@ export function VoterTable(props: voterProps) {
 
     const classes = useStyles();
 
+    // const editVoter = () => {
+    //     console.log('I want to Change!');
+    //   //  props.onEditVoter(voter: Voter);
+    // }
+
     return (
         <>
             <h3 className={classes.h3}> Here is the current list of Voters</h3>
@@ -107,6 +113,16 @@ export function VoterTable(props: voterProps) {
                             <TableCell>{voter.birthdate}</TableCell>
                             <TableCell>{voter.email}</TableCell>
                             <TableCell>{voter.phone}</TableCell>
+                            <TableCell>
+                                <Button
+                                    onClick={() => {
+                                        props.onDeleteVoter(voter.id);
+                                    }}
+                                >
+                                    Delete
+                                </Button>
+                                {/* <Button onClick={editVoter}>Edit</Button> */}
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
