@@ -35,7 +35,8 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "format": "pretty-quick"
+        "format": "pretty-quick",
+        "format:all": "prettier --write './{,**/}*{.js,.tsx,.ts}'"
     },
     "eslintConfig": {
         "extends": "react-app"
