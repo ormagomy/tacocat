@@ -1,5 +1,13 @@
 import {Reducer} from 'react';
-import {isAddVoterDoneAction, isDeleteVoterDoneAction, isEditVoterDoneAction, isFetchVotersDoneAction, VotersActions} from '../actions/voterActions';
+import {
+    isAddVoterDoneAction,
+    isDeleteVoterDoneAction,
+    isSaveVoterDoneAction,
+    isFetchVotersDoneAction,
+    VotersActions,
+    isEditVoterAction,
+    isCancelEditAction,
+} from '../actions/voterActions';
 import {Voter} from '../models/Voters';
 
 export const votersReducer: Reducer<Voter[], VotersActions> = (voters = [], action) => {
@@ -7,7 +15,7 @@ export const votersReducer: Reducer<Voter[], VotersActions> = (voters = [], acti
         return voters.filter((voter) => voter.id !== action.payload.voterId);
     }
 
-    if (isEditVoterDoneAction(action)) {
+    if (isSaveVoterDoneAction(action)) {
         const index = voters.findIndex((item) => action.payload.voter.id === item.id);
         const votersUpdate = voters.concat(); // Clone the array
         votersUpdate.splice(index, 1, action.payload.voter);
@@ -23,4 +31,16 @@ export const votersReducer: Reducer<Voter[], VotersActions> = (voters = [], acti
     }
 
     return voters;
+};
+
+export const voterToEditReducer: Reducer<Voter | null, VotersActions> = (voterToEdit = null, action) => {
+    if (isEditVoterAction(action)) {
+        return action.payload.voter;
+    }
+
+    if (isCancelEditAction(action)) {
+        return null;
+    }
+
+    return voterToEdit;
 };

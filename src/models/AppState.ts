@@ -12,6 +12,7 @@ export type VotingScreenState = {
 
 export type AppState = {
     voters: Voter[];
+    voterToEdit: Voter;
     elections: Election[];
     ballots: Ballot[];
     votingScreen: VotingScreenState;

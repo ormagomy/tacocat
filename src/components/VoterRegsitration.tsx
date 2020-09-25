@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addVoter, deleteVoter, editVoter, fetchVoters} from '../actions/voterActions';
+import {addVoter, deleteVoter, saveVoter, fetchVoters, createCancelEditAction, createEditVoterAction} from '../actions/voterActions';
 import {AppState} from '../models/AppState';
 import {NewVoter, Voter} from '../models/Voters';
 
@@ -14,11 +14,14 @@ export function VoterRegsitration() {
 
     const dispatch = useDispatch();
     const voters = useSelector<AppState, Voter[]>((state) => state.voters);
+    const voterToEdit = useSelector<AppState, Voter>((state) => state.voterToEdit);
 
     const boundActions = bindActionCreators(
         {
             onAddVoter: addVoter,
-            onEditVoter: editVoter,
+            onSaveVoter: saveVoter,
+            onEditVoter: createEditVoterAction,
+            onCancelEdit: createCancelEditAction,
             onDeleteVoter: deleteVoter,
         },
         dispatch
@@ -49,7 +52,7 @@ export function VoterRegsitration() {
             {displayRegistration && <VoterForm buttonText="Complete Registration" {...boundActions} onAddVoter={onAddVoter} />}
 
             {!displayRegistration && <button onClick={() => setDisplayVoters(!displayVoters)}>{displayVoters ? 'Hide' : 'Display'} Voters</button>}
-            {displayVoters && <VoterTable voters={voters} {...boundActions} />}
+            {displayVoters && <VoterTable voters={voters} voterToEdit={voterToEdit} {...boundActions} />}
         </div>
     );
 }
