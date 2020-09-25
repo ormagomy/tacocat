@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {Button} from '@material-ui/core';
 import {addVoter, deleteVoter, saveVoter, fetchVoters, createCancelEditAction, createEditVoterAction} from '../actions/voterActions';
 import {AppState} from '../models/AppState';
 import {NewVoter, Voter} from '../models/Voters';
@@ -39,19 +40,27 @@ export function VoterRegsitration() {
 
     return (
         <div>
-            <h2> Welcome to voter Registration</h2>
+            <h2>Voter Registration</h2>
 
-            <button
+            <Button
+                variant="contained"
                 onClick={() => {
                     setDisplayRegistration(!displayRegistration);
                     setDisplayVoters(false);
                 }}
             >
                 {displayRegistration ? 'Close Registration' : 'Register Voter'}
-            </button>
+            </Button>
             {displayRegistration && <VoterForm buttonText="Complete Registration" {...boundActions} onAddVoter={onAddVoter} />}
 
-            {!displayRegistration && <button onClick={() => setDisplayVoters(!displayVoters)}>{displayVoters ? 'Hide' : 'Display'} Voters</button>}
+            <br />
+            <br />
+
+            {!displayRegistration && (
+                <Button variant="contained" onClick={() => setDisplayVoters(!displayVoters)}>
+                    {displayVoters ? 'Hide' : 'Display'} Voters
+                </Button>
+            )}
             {displayVoters && <VoterTable voters={voters} voterToEdit={voterToEdit} {...boundActions} />}
         </div>
     );

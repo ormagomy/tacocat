@@ -1,3 +1,4 @@
+import {TextField, Button} from '@material-ui/core';
 import React, {useState, ChangeEvent} from 'react';
 import {NewVoter} from '../models/Voters';
 
@@ -43,36 +44,33 @@ export function VoterForm(props: VoterFormProps) {
                 <h2>Voter Form</h2>
             </div>
             <div>
-                <label>
-                    First Name <input type="text" name="firstname" value={voterForm.firstname} onChange={change} />
-                </label>
-                <label>
-                    Last Name <input type="text" name="lastname" value={voterForm.lastname} onChange={change} />
-                </label>
+                <TextField id="outlined-basic" label="First Name" type="text" name="firstname" required={true} style={{margin: 15}} value={voterForm.firstname} onChange={change} />
+                <TextField id="outlined-basic" label="Last Name" type="text" name="lastname" required={true} style={{margin: 15}} value={voterForm.lastname} onChange={change} />
             </div>
             <div>
-                <label>
-                    Address <input type="text" name="address" value={voterForm.address} onChange={change} />
-                </label>
-                <label>
-                    City <input type="text" name="city" value={voterForm.city} onChange={change} />
-                </label>
+                <TextField id="outlined-basic" label="Address" type="text" name="address" style={{margin: 15}} value={voterForm.address} onChange={change} />
+                <TextField id="outlined-basic" label="City" type="text" name="city" style={{margin: 15}} value={voterForm.city} onChange={change} />
             </div>
             <div>
-                <label>
-                    Birth Date <input type="text" name="birthdate" value={voterForm.birthdate} onChange={change} />
-                </label>
-                <label>
-                    Email Address <input type="text" name="email" value={voterForm.email} onChange={change} />
-                </label>
-                <label>
-                    Phone Number <input type="text" name="phone" value={voterForm.phone} onChange={change} />
-                </label>
+                <TextField
+                    id="outlined-basic"
+                    label="Birth Date"
+                    type="date"
+                    name="birthdate"
+                    style={{margin: 15}}
+                    InputLabelProps={{shrink: true}}
+                    value={voterForm.birthdate}
+                    onChange={change}
+                ></TextField>
+                <TextField id="outlined-basic" label="Email Address" type="text" name="email" style={{margin: 15}} value={voterForm.email} onChange={change} />
+                <TextField id="outlined-basic" label="Phone Number" type="text" name="phone" style={{margin: 15}} value={voterForm.phone} onChange={change} />
             </div>
             <div>
-                <button type="button" onClick={submitVoter}>
+                <br></br>
+                <Button size="small" variant="contained" onClick={submitVoter}>
                     {props.buttonText}
-                </button>
+                </Button>
+                <br></br>
             </div>
         </form>
     );
