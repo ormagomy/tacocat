@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import {makeStyles} from '@material-ui/core';
+import {makeStyles, AppBar, Toolbar, Button} from '@material-ui/core';
 
 import tacocat from './images/tacocat.png';
 
@@ -12,6 +12,16 @@ import {Vote} from './components/Vote';
 const useStyles = makeStyles({
     mascot: {
         width: 100,
+        margin: '10px 10px 0',
+    },
+    appBar: {
+        backgroundColor: '#ff9999',
+    },
+    menuButton: {
+        margin: '0 15px',
+    },
+    menuLink: {
+        textDecoration: 'none',
     },
 });
 
@@ -21,20 +31,30 @@ export default function BasicExample() {
     return (
         <Router>
             <div>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/VoterRegsitration">Register Voter</Link>
-                    </li>
-                    <li>
-                        <Link to="/Vote">Vote</Link>
-                    </li>
-                    <li>
-                        <Link to="/Election">Election</Link>
-                    </li>
-                </ul>
+                <AppBar className={classes.appBar} position="static" color="default">
+                    <Toolbar>
+                        <Button className={classes.menuButton} variant="contained">
+                            <Link className={classes.menuLink} to="/">
+                                Home
+                            </Link>
+                        </Button>
+                        <Button className={classes.menuButton} variant="contained">
+                            <Link className={classes.menuLink} to="/VoterRegsitration">
+                                Register Voter
+                            </Link>
+                        </Button>
+                        <Button className={classes.menuButton} variant="contained">
+                            <Link className={classes.menuLink} to="/Vote">
+                                Vote
+                            </Link>
+                        </Button>
+                        <Button className={classes.menuButton} variant="contained">
+                            <Link className={classes.menuLink} to="/Election">
+                                Election
+                            </Link>
+                        </Button>
+                    </Toolbar>
+                </AppBar>
 
                 <img className={classes.mascot} src={tacocat} alt="tacocat" />
                 <small>"Nothing is particularly hard if you divide it into small jobs." -Henry Ford</small>
