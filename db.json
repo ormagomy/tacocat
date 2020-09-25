@@ -1,7 +1,7 @@
 {
     "voters": [
         {
-            "id": 123,
+            "id": 1,
             "firstname": "Fred",
             "lastname": "Flintstone",
             "address": "123 calle de street",
@@ -11,7 +11,7 @@
             "phone": "520-123-4567"
         },
         {
-            "id": 234,
+            "id": 2,
             "firstname": "Wilma",
             "lastname": "FlintStone",
             "address": "456 street",
@@ -53,9 +53,23 @@
     ],
     "ballots": [
         {
-            "id": 1,
-            "voterId": 123,
-            "electionId": 1,
+            "electionId": 2,
+            "voterId": 1,
+            "votes": [
+                {
+                    "questionId": 1,
+                    "answer": false
+                },
+                {
+                    "questionId": 2,
+                    "answer": true
+                }
+            ],
+            "id": 1
+        },
+        {
+            "electionId": 2,
+            "voterId": 2,
             "votes": [
                 {
                     "questionId": 1,
@@ -65,22 +79,8 @@
                     "questionId": 2,
                     "answer": false
                 }
-            ]
-        },
-        {
-            "id": 2,
-            "voterId": 234,
-            "electionId": 1,
-            "votes": [
-                {
-                    "questionId": 1,
-                    "answer": true
-                },
-                {
-                    "questionId": 2,
-                    "answer": true
-                }
-            ]
+            ],
+            "id": 2
         }
     ]
 }
