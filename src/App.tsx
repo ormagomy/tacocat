@@ -37,6 +37,7 @@ export default function BasicExample() {
                 </ul>
 
                 <img className={classes.mascot} src={tacocat} alt="tacocat" />
+                <small>"Nothing is particularly hard if you divide it into small jobs." -Henry Ford</small>
 
                 <hr />
 
