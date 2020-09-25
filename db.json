@@ -19,6 +19,36 @@
             "birthdate": "12/12/12",
             "email": "here@work.com",
             "phone": "520-123-4567"
+        },
+        {
+            "firstname": "test",
+            "lastname": "test",
+            "address": "aaa",
+            "city": "aaa",
+            "birthdate": "aaa",
+            "email": "aa",
+            "phone": "aa",
+            "id": 235
+        },
+        {
+            "firstname": "First Name",
+            "lastname": "Last Name",
+            "address": "Address, Street Name",
+            "city": "City",
+            "birthdate": "10-10-2020",
+            "email": "test@test.com",
+            "phone": "123-456-7890",
+            "id": 236
+        },
+        {
+            "firstname": "sunil",
+            "lastname": "singamsetty",
+            "address": "1233",
+            "city": "fremont",
+            "birthdate": "2020-10-10",
+            "email": "test@test.com",
+            "phone": "6501010303",
+            "id": 237
         }
     ],
     "elections": [

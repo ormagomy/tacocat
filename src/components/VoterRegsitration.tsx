@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import Button from '@material-ui/core/Button';
 import {addVoter, deleteVoter, editVoter, fetchVoters} from '../actions/voterActions';
 import {AppState} from '../models/AppState';
 import {Voter} from '../models/Voters';
@@ -33,16 +34,18 @@ export function VoterRegsitration() {
     };
 
     const divStyle = {
-        backgroundColor: '#ff9999',
+        backgroundColor: '#fff5d7',
     };
 
     return (
         <div style={divStyle}>
-            <h2> Welcome to voter Registration</h2>
+            <h2> Welcome to Voter Registration</h2>
 
             <VoterForm buttonText="Complete Registration" {...boundActions} />
-
-            <button onClick={display}>Display Lsit of Voters</button>
+            <br></br>
+            <Button size="small" variant="contained" onClick={display}>
+                Display List of Voters
+            </Button>
             {displayVoters && <VoterTable voters={voters} />}
         </div>
     );
