@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Voter} from '../models/Voters';
-
 import {Table, TableBody, TableHead, TableRow, TableCell, TableSortLabel, makeStyles} from '@material-ui/core';
-//Sorting Stuff
+import {VoterViewRow} from './VoterViewRow';
+import {VoterEditRow} from './VoterEditRow';
+
 type orderType = 'asc' | 'desc' | undefined;
 
 function descendingComparator(a: any, b: any, orderBy: string) {
@@ -30,10 +31,14 @@ function stableSort(voters: Voter[], comparator: (a: Voter, b: Voter) => number)
     });
     return stabilizedThis.map((el) => el.voter);
 }
-//End Sorting Stuff
 
-export type voterProps = {
+export type VoterTableProps = {
     voters: Voter[];
+    voterToEdit: Voter;
+    onDeleteVoter: (voterId: number) => void;
+    onSaveVoter: (voter: Voter) => void;
+    onEditVoter: (voter: Voter) => void;
+    onCancelEdit: () => void;
 };
 const headCells = [
     {id: 'id', label: 'VoterId'},
@@ -44,11 +49,24 @@ const headCells = [
     {id: 'birthdate', label: 'Birthdate'},
     {id: 'email', label: 'Email'},
     {id: 'phone', label: 'Phone'},
+    {id: 'actions', label: 'Actions'},
 ];
 
-export function VoterTable(props: voterProps) {
-    const [orderBy, setOrderBy] = useState(headCells[0].id);
+const useStyles = makeStyles({
+    h3: {
+        'background-color': '#e6ffe6', //green
+    },
 
+    tbody: {
+        'background-color': '#ffffe6', //yellow
+    },
+    thead: {
+        'background-color': '#ff9999', //red
+    },
+});
+
+export function VoterTable(props: VoterTableProps) {
+    const [orderBy, setOrderBy] = useState(headCells[0].id);
     const [order, setOrder] = useState<orderType>('asc');
 
     const handleSort = (id: string) => {
@@ -59,20 +77,6 @@ export function VoterTable(props: voterProps) {
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(id);
     };
-
-    const useStyles = makeStyles({
-        h3: {
-            'background-color': '#e6ffe6', //green
-        },
-
-        tbody: {
-            'background-color': '#ffffe6', //yellow
-        },
-        thead: {
-            // 'background-color': '#ff9999', //red
-            'background-color': 'blue', //red
-        },
-    });
 
     const classes = useStyles();
 
@@ -97,18 +101,13 @@ export function VoterTable(props: voterProps) {
                     </TableRow>
                 </TableHead>
                 <TableBody className={classes.tbody}>
-                    {stableSort(props.voters, getComparator(order, orderBy)).map((voter) => (
-                        <TableRow key={voter.id}>
-                            <TableCell>{voter.id}</TableCell>
-                            <TableCell>{voter.firstname}</TableCell>
-                            <TableCell>{voter.lastname}</TableCell>
-                            <TableCell>{voter.address}</TableCell>
-                            <TableCell>{voter.city}</TableCell>
-                            <TableCell>{voter.birthdate}</TableCell>
-                            <TableCell>{voter.email}</TableCell>
-                            <TableCell>{voter.phone}</TableCell>
-                        </TableRow>
-                    ))}
+                    {stableSort(props.voters, getComparator(order, orderBy)).map((voter) =>
+                        props.voterToEdit === voter ? (
+                            <VoterEditRow key={voter.id} voter={voter} onCancel={props.onCancelEdit} onSave={props.onSaveVoter} />
+                        ) : (
+                            <VoterViewRow key={voter.id} voter={voter} onEditVoter={props.onEditVoter} onDeleteVoter={props.onDeleteVoter} />
+                        )
+                    )}
                 </TableBody>
             </Table>
         </>

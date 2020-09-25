@@ -1,52 +1,67 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Button from '@material-ui/core/Button';
-import {addVoter, deleteVoter, editVoter, fetchVoters} from '../actions/voterActions';
+import {Button} from '@material-ui/core';
+import {addVoter, deleteVoter, saveVoter, fetchVoters, createCancelEditAction, createEditVoterAction} from '../actions/voterActions';
 import {AppState} from '../models/AppState';
-import {Voter} from '../models/Voters';
+import {NewVoter, Voter} from '../models/Voters';
 
 import {VoterForm} from './VoterForm';
 import {VoterTable} from './VoterTable';
 
 export function VoterRegsitration() {
-    const [displayVoters, setDisplay] = useState(false);
+    const [displayVoters, setDisplayVoters] = useState(false);
+    const [displayRegistration, setDisplayRegistration] = useState(false);
 
     const dispatch = useDispatch();
     const voters = useSelector<AppState, Voter[]>((state) => state.voters);
+    const voterToEdit = useSelector<AppState, Voter>((state) => state.voterToEdit);
 
     const boundActions = bindActionCreators(
         {
             onAddVoter: addVoter,
-            onEditVoter: editVoter,
+            onSaveVoter: saveVoter,
+            onEditVoter: createEditVoterAction,
+            onCancelEdit: createCancelEditAction,
             onDeleteVoter: deleteVoter,
         },
         dispatch
     );
+
+    const onAddVoter = (voter: NewVoter) => {
+        boundActions.onAddVoter(voter);
+        setDisplayRegistration(false);
+    };
 
     // Fetch the initial list of voters
     useEffect(() => {
         dispatch(fetchVoters());
     }, [dispatch]);
 
-    const display = () => {
-        return setDisplay(!displayVoters);
-    };
-
-    const divStyle = {
-        backgroundColor: '#fff5d7',
-    };
-
     return (
-        <div style={divStyle}>
-            <h2> Welcome to Voter Registration</h2>
+        <div>
+            <h2>Voter Registration</h2>
 
-            <VoterForm buttonText="Complete Registration" {...boundActions} />
-            <br></br>
-            <Button size="small" variant="contained" onClick={display}>
-                Display List of Voters
+            <Button
+                variant="contained"
+                onClick={() => {
+                    setDisplayRegistration(!displayRegistration);
+                    setDisplayVoters(false);
+                }}
+            >
+                {displayRegistration ? 'Close Registration' : 'Register Voter'}
             </Button>
-            {displayVoters && <VoterTable voters={voters} />}
+            {displayRegistration && <VoterForm buttonText="Complete Registration" {...boundActions} onAddVoter={onAddVoter} />}
+
+            <br />
+            <br />
+
+            {!displayRegistration && (
+                <Button variant="contained" onClick={() => setDisplayVoters(!displayVoters)}>
+                    {displayVoters ? 'Hide' : 'Display'} Voters
+                </Button>
+            )}
+            {displayVoters && <VoterTable voters={voters} voterToEdit={voterToEdit} {...boundActions} />}
         </div>
     );
 }

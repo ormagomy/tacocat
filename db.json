@@ -1,7 +1,7 @@
 {
     "voters": [
         {
-            "id": 123,
+            "id": 1,
             "firstname": "Fred",
             "lastname": "Flintstone",
             "address": "123 calle de street",
@@ -11,7 +11,7 @@
             "phone": "520-123-4567"
         },
         {
-            "id": 234,
+            "id": 2,
             "firstname": "Wilma",
             "lastname": "FlintStone",
             "address": "456 street",
@@ -19,36 +19,6 @@
             "birthdate": "12/12/12",
             "email": "here@work.com",
             "phone": "520-123-4567"
-        },
-        {
-            "firstname": "test",
-            "lastname": "test",
-            "address": "aaa",
-            "city": "aaa",
-            "birthdate": "aaa",
-            "email": "aa",
-            "phone": "aa",
-            "id": 235
-        },
-        {
-            "firstname": "First Name",
-            "lastname": "Last Name",
-            "address": "Address, Street Name",
-            "city": "City",
-            "birthdate": "10-10-2020",
-            "email": "test@test.com",
-            "phone": "123-456-7890",
-            "id": 236
-        },
-        {
-            "firstname": "sunil",
-            "lastname": "singamsetty",
-            "address": "1233",
-            "city": "fremont",
-            "birthdate": "2020-10-10",
-            "email": "test@test.com",
-            "phone": "6501010303",
-            "id": 237
         }
     ],
     "elections": [
@@ -83,9 +53,23 @@
     ],
     "ballots": [
         {
-            "id": 1,
-            "voterId": 123,
-            "electionId": 1,
+            "electionId": 2,
+            "voterId": 1,
+            "votes": [
+                {
+                    "questionId": 1,
+                    "answer": false
+                },
+                {
+                    "questionId": 2,
+                    "answer": true
+                }
+            ],
+            "id": 1
+        },
+        {
+            "electionId": 2,
+            "voterId": 2,
             "votes": [
                 {
                     "questionId": 1,
@@ -95,22 +79,8 @@
                     "questionId": 2,
                     "answer": false
                 }
-            ]
-        },
-        {
-            "id": 2,
-            "voterId": 234,
-            "electionId": 1,
-            "votes": [
-                {
-                    "questionId": 1,
-                    "answer": true
-                },
-                {
-                    "questionId": 2,
-                    "answer": true
-                }
-            ]
+            ],
+            "id": 2
         }
     ]
 }
