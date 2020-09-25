@@ -38,7 +38,7 @@ type CreateEditBallotBeginAction = () => EditBallotBeginAction;
 type CreateEditBallotDoneAction = (ballot: Ballot) => EditBallotDoneAction;
 type CreateDeleteBallotBeginAction = () => DeleteBallotBeginAction;
 type CreateDeleteBallotDoneAction = (ballotId: number) => DeleteBallotDoneAction;
-export type BallotsActions = FetchBallotsDoneAction | AddBallotDoneAction;
+export type BallotsActions = FetchBallotsDoneAction | AddBallotDoneAction | EditBallotDoneAction | DeleteBallotDoneAction;
 
 export const createFetchBallotsBeginAction: CreateFetchBallotsBeginAction = () => ({
     type: FETCH_BALLOTS_BEGIN_ACTION,

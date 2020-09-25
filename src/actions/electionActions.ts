@@ -38,7 +38,7 @@ type CreateEditElectionBeginAction = () => EditElectionBeginAction;
 type CreateEditElectionDoneAction = (election: Election) => EditElectionDoneAction;
 type CreateDeleteElectionBeginAction = () => DeleteElectionBeginAction;
 type CreateDeleteElectionDoneAction = (electionId: number) => DeleteElectionDoneAction;
-export type ElectionsActions = FetchElectionsDoneAction | AddElectionDoneAction;
+export type ElectionsActions = FetchElectionsDoneAction | AddElectionDoneAction | EditElectionDoneAction | DeleteElectionDoneAction;
 
 export const createFetchElectionsBeginAction: CreateFetchElectionsBeginAction = () => ({
     type: FETCH_ELECTIONS_BEGIN_ACTION,

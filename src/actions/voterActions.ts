@@ -38,7 +38,7 @@ type CreateEditVoterBeginAction = () => EditVoterBeginAction;
 type CreateEditVoterDoneAction = (voter: Voter) => EditVoterDoneAction;
 type CreateDeleteVoterBeginAction = () => DeleteVoterBeginAction;
 type CreateDeleteVoterDoneAction = (voterId: number) => DeleteVoterDoneAction;
-export type VotersActions = FetchVotersDoneAction | AddVoterDoneAction;
+export type VotersActions = FetchVotersDoneAction | AddVoterDoneAction | EditVoterDoneAction | DeleteVoterDoneAction;
 
 export const createFetchVotersBeginAction: CreateFetchVotersBeginAction = () => ({
     type: FETCH_VOTERS_BEGIN_ACTION,
