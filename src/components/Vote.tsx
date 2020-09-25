@@ -1,9 +1,10 @@
+import {Button} from '@material-ui/core';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchElections} from '../actions/electionActions';
 import {fetchVoters} from '../actions/voterActions';
-import {createSelectedElectionAction, createVerifyVoterAction, verifyVoter, VotingScreen} from '../actions/votingScreenActions';
+import {castVote, createReturnToMainAction, createSelectedElectionAction, verifyVoter, VotingScreen} from '../actions/votingScreenActions';
 import {AppState, VotingScreenState} from '../models/AppState';
 import {Election} from '../models/Elections';
 import {Voter} from '../models/Voters';
@@ -27,18 +28,19 @@ export function Vote() {
         {
             onSelectedElection: createSelectedElectionAction,
             onVerifyVoter: verifyVoter,
+            onCastVote: castVote,
+            onReturnToMain: createReturnToMainAction,
         },
         dispatch
     );
 
     const selectElection = (electionId: number) => {
-        boundActions.onSelectedElection(elections.find((election) => election.id === electionId) as Election);
+        const election = elections.find((election) => election.id === electionId) as Election;
+        boundActions.onSelectedElection(election);
     };
 
     const verifyVoterId = (voterId: number) => {
-        console.log(`voterId: ${voterId}`);
         const voter = voters.find((voter) => voter.id === voterId);
-        console.log(voter);
         boundActions.onVerifyVoter(voter, votingScreen.selectedElection);
     };
 
@@ -48,7 +50,15 @@ export function Vote() {
             {votingScreen.screen === VotingScreen.CHOOSE_ELECTION && <ElectionSelector elections={elections} onSelect={selectElection} />}
             {votingScreen.screen === VotingScreen.ENTER_VOTER_INFORMATION && <VoterVerification onSubmit={verifyVoterId} />}
             {votingScreen.voterError && <div>{votingScreen.voterError}</div>}
-            {votingScreen.screen === VotingScreen.BALLOT && <Ballot voter={votingScreen.voter} election={votingScreen.selectedElection} />}
+            {votingScreen.screen === VotingScreen.BALLOT && <Ballot voter={votingScreen.voter} election={votingScreen.selectedElection} {...boundActions} />}
+            {votingScreen.screen === VotingScreen.SUCCESS && (
+                <>
+                    <h2>Success!</h2>
+                    <Button variant="contained" onClick={() => boundActions.onReturnToMain()}>
+                        Return
+                    </Button>
+                </>
+            )}
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button} from '@material-ui/core';
 
 type VoterVerificationProps = {
     onSubmit: (voterId: number) => void;
@@ -10,7 +11,9 @@ export function VoterVerification({onSubmit}: VoterVerificationProps) {
         <>
             <span>Enter voter id: </span>
             <input type="number" value={voterId || ''} onChange={(e) => setVoterId(e.target.valueAsNumber)} />
-            <button onClick={() => onSubmit(voterId!)}>Submit</button>
+            <Button variant="contained" onClick={() => onSubmit(voterId!)}>
+                Submit
+            </Button>
         </>
     );
 }

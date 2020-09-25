@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Select, MenuItem, Button} from '@material-ui/core';
 import {Election} from '../models/Elections';
 
 type ElectionSelectorProps = {
@@ -11,14 +12,16 @@ export function ElectionSelector({elections, onSelect}: ElectionSelectorProps) {
     return (
         <>
             <span>Select a ballot: </span>
-            <select onChange={(e) => setSelectedElection(e.target.value)} value={selectedElection}>
+            <Select onChange={(e) => setSelectedElection(e.target.value as string)} value={selectedElection}>
                 {elections.map((election) => (
-                    <option key={election.id} value={election.id}>
+                    <MenuItem key={election.id} value={election.id}>
                         {election.name}
-                    </option>
+                    </MenuItem>
                 ))}
-            </select>
-            <button onClick={() => onSelect(Number(selectedElection))}>Vote</button>
+            </Select>
+            <Button variant="contained" onClick={() => onSelect(Number(selectedElection))}>
+                Vote
+            </Button>
         </>
     );
 }

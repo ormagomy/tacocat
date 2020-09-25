@@ -1,6 +1,14 @@
 import {Reducer} from 'react';
 import {combineReducers} from 'redux';
-import {isAlreadyVotedAction, isSelectedElectionAction, isVerifyVoterAction, VotingScreen, VotingScreenActions} from '../actions/votingScreenActions';
+import {
+    isAlreadyVotedAction,
+    isCastVoteAction,
+    isReturnToMainAction,
+    isSelectedElectionAction,
+    isVerifyVoterAction,
+    VotingScreen,
+    VotingScreenActions,
+} from '../actions/votingScreenActions';
 import {Election} from '../models/Elections';
 import {Voter} from '../models/Voters';
 
@@ -14,6 +22,14 @@ export const screenReducer: Reducer<VotingScreen, VotingScreenActions> = (screen
             return VotingScreen.ENTER_VOTER_INFORMATION;
         }
         return VotingScreen.BALLOT;
+    }
+
+    if (isCastVoteAction(action)) {
+        return VotingScreen.SUCCESS;
+    }
+
+    if (isReturnToMainAction(action)) {
+        return VotingScreen.CHOOSE_ELECTION;
     }
 
     return screen;
